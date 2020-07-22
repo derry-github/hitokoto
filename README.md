@@ -3,6 +3,7 @@
 Displays a random quote taken from [hitokoto.cn](https://hitokoto.cn/)
 
 Created by [Derry](derry96.github.io)
+
 see[中文文档](./README_zh.md)
 
 ## Usage
