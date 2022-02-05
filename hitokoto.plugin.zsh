@@ -8,4 +8,7 @@ if ! (( $+commands[jq] )); then
     return
 fi
 
-curl -sL https://v1.hitokoto.cn/\?encode\=json | jq '.hitokoto'
+curl -sL https://v1.hitokoto.cn/\?encode\=json |\
+    jq '.hitokoto,.from'|sed  's/^"\(.*\)"$/\1/' |\
+    awk 'BEGIN{FS="\n";RS=""}{print $1"-----"$2}' |\
+    xargs echo $fg[green]
