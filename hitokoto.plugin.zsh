@@ -8,7 +8,7 @@ if ! (( $+commands[jq] )); then
     return
 fi
 
-curl --connect-timeout 0.2 -m 0.2 -sL https://v1.hitokoto.cn/\?encode\=json |\
+curl --connect-timeout 1 -m 1 -sL https://v1.hitokoto.cn/\?encode\=json |\
     jq '.hitokoto,.from'|sed  's/^"\(.*\)"$/\1/' |\
     awk 'BEGIN{FS="\n";RS=""}{print $1" --"$2}' |\
     xargs echo $fg[green]
